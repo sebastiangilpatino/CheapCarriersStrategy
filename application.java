@@ -9,8 +9,8 @@ public class application {
 
 	public static void main(String[] args) throws CloneNotSupportedException {
 
-		String descript, zone;
-		double weight;
+		String descript = "", zone = "";
+		double weight = 0;
 		int numbPackage = 0;
 
 		ICompany ups = new Ups("UPS");
@@ -38,11 +38,16 @@ public class application {
 		for (int i = 0; i < numbPackage; i++) {
 			System.out.println("");
 			System.out.print("Input Description: ");
-			descript = sc.nextLine();
-			System.out.print("Input the weight: ");
-			weight = Double.valueOf(sc.nextLine());
-			System.out.print("Input the zone: ");
-			zone = sc.nextLine();
+
+			try {
+				descript = sc.nextLine();
+				System.out.print("Input the weight: ");
+				weight = Double.valueOf(sc.nextLine());
+				System.out.print("Input the zone: ");
+				zone = sc.nextLine();
+			} catch (NumberFormatException e) {
+				System.out.println("Error");
+			}
 
 			for (int j = 0; j < companies.size(); j++) {
 				companies.get(j).setDescript(descript);
